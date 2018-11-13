@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { getFavorites, setFavorites } from "../utils/Tools";
 
 class FavoriteBeerCard extends Component {
@@ -32,18 +31,18 @@ class FavoriteBeerCard extends Component {
                             <p className="favorite-beer-card__description">{item.description}</p>
 
                             <div className="favorite-beer-card__actions">
-                                <a className="favorite-beer-card__button waves-effect waves-light btn-small">Open</a>
-                                <a
+                                <button className="favorite-beer-card__button waves-effect waves-light btn-small">Open</button>
+                                <button
                                     className="favorite-beer-card__button waves-effect waves-light btn-small"
                                     onClick={() => this.removeFavorite(item.id)}
                                 >
                                     REMOVE FAVORITE
-                                </a>
+                                </button>
                             </div>
                         </div>
 
                         <div className="col s3">
-                            <img className="favorite-beer-card__image" src={item.image_url} />
+                            <img className="favorite-beer-card__image" src={item.image_url} alt={item.name} />
                         </div>
                     </div>
                 </div>

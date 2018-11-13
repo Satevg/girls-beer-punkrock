@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Like from "../icons/Like";
 import { getFavorites, setFavorites } from "../utils/Tools";
 
@@ -31,7 +30,7 @@ class BeerCard extends Component {
         return (
             <div className="beer-card card col s3">
                 <div className="card-image">
-                    <img className="beer-card__image" src={item.image_url} />
+                    <img className="beer-card__image" alt={item.name} src={item.image_url} />
                 </div>
                 <div className="card-content">
                     <span className="beer-card__title">{item.name}</span>

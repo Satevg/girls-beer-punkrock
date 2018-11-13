@@ -23,17 +23,21 @@ class BeerStore {
         xhr.send(null);
     }
 
-    getBeers(qs) {
-        let url = `${API_HOST}/beers?per_page=${qs.limit}&page=${qs.page}`;
-        this.request("GET", url);
-        return this.data;
+    createQueryParams(params) {
+        return Object.keys(params)
+            .map(k => `${k}=${encodeURI(params[k])}`)
+            .join("&");
     }
 
     getFavoriteBeers(ids) {
-        console.log("REQ");
         let searchFavorites = ids.join("|");
-        let url = `${API_HOST}/beers?ids=${searchFavorites}`;
+        let url = `${API_HOST}?ids=${searchFavorites}`;
         this.request("GET", url);
+        return this.data; // TODO: fix in 'fetch version', can lead to problems if there was error on request
+    }
+
+    searchBeers(qs) {
+        this.request("GET", `${API_HOST}?${this.createQueryParams(qs)}`);
         return this.data;
     }
 }
