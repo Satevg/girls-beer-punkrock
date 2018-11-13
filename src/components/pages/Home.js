@@ -43,7 +43,7 @@ export default class Home extends Component {
 
         let moreBeers = this.beerStore.searchBeers(queryParams);
         Array.prototype.push.apply(this.state.beers, moreBeers);
-        if (moreBeers && !moreBeers.length) this.stopSearch = true;
+        if (moreBeers.length === 0) this.stopSearch = true;
         this.setState({ page: page, isLoading: false });
     };
 
