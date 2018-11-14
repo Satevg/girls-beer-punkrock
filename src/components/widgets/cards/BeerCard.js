@@ -32,7 +32,7 @@ class BeerCard extends Component {
         return (
             <div className="beer-card card col s4">
                 <div className="card-image">
-                    <img className="beer-card__image" alt={item.name} src={item.image_url} />
+                    <img className="beer-card__image circle" alt={item.name} src={item.image_url} />
                 </div>
                 <div className="card-content center">
                     <span className="beer-card__title">{item.name}</span>

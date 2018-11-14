@@ -4,6 +4,7 @@ import Paginator from "../widgets/Paginator";
 import FavoriteBeerCard from "../widgets/cards/FavoriteBeerCard";
 import { getFavorites } from "../utils/Tools";
 import { PAGINATION_FAVORITES } from "../constants/app";
+import Spinner from "../icons/Spinner";
 
 export default class Favorites extends Component {
     constructor(props) {
@@ -12,6 +13,7 @@ export default class Favorites extends Component {
             beers: [],
             filteredBeers: [],
             offset: null,
+            isLoading: false,
         };
         this.favorites = getFavorites();
         this.beerStore = BeerStore;
@@ -19,10 +21,11 @@ export default class Favorites extends Component {
     }
 
     componentDidMount() {
-        this.isLoading = true;
+        this.setState({ isLoading: true });
         this.beerStore.getFavoriteBeers(this.favorites).then(beers => {
             this.setState({
                 beers: beers,
+                isLoading: false,
             });
             if (this.state.offset === null) {
                 this.filterBeers(1, beers);
@@ -62,7 +65,7 @@ export default class Favorites extends Component {
     render() {
         return this.state.beers.length ? (
             <div>
-                <h2>yfb</h2>
+                <h3>Your favorites</h3>
                 <div className="row">
                     {this.state.filteredBeers.map((beer, i) => {
                         return <FavoriteBeerCard removeFavoriteCard={this.removeFavoriteCard} key={i} item={beer} />;
@@ -71,6 +74,10 @@ export default class Favorites extends Component {
                 {this.state.beers.length > 5 ? (
                     <Paginator filterBeers={this.filterBeers} total={this.state.beers.length} />
                 ) : null}
+            </div>
+        ) : this.state.isLoading ? (
+            <div className="spinner">
+                <Spinner />
             </div>
         ) : (
             <h1>You have no favorite beers yet</h1>

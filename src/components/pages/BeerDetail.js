@@ -2,19 +2,21 @@ import React, { Component } from "react";
 
 import BeerStore from "../stores/BeerStore";
 import AddRemoveFavoriteButton from "../widgets/html/AddRemoveFavoriteButton";
+import Spinner from "../icons/Spinner";
 
 export default class Home extends Component {
     constructor(props) {
         super(props);
         this.id = this.props.match.params.id;
         this.beerStore = BeerStore;
-        this.state = { item: null };
+        this.state = { item: null, isLoading: false };
     }
 
     componentDidMount() {
+        this.setState({ isLoading: true });
         this.beerStore.getBeer(this.id).then(item => {
             if (item !== null) {
-                this.setState({ item: item[0] });
+                this.setState({ item: item[0], isLoading: false });
             }
         });
     }
@@ -35,6 +37,11 @@ export default class Home extends Component {
                                 <p id="beer-detail__tagline">{item.tagline}</p>
                                 <AddRemoveFavoriteButton reRender={this.reRender} id={item.id} />
                                 <p id="beer-detail__description">{item.description}</p>
+                            </div>
+                            <div className="col s3">
+                                <div className="card-image">
+                                    <img className="beer-card__image" alt={item.name} src={item.image_url} />
+                                </div>
                             </div>
                         </div>
 
@@ -151,6 +158,10 @@ export default class Home extends Component {
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                ) : this.state.isLoading ? (
+                    <div className="spinner">
+                        <Spinner />
                     </div>
                 ) : (
                     <div className="center">
