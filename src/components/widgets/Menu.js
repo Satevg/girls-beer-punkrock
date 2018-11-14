@@ -28,7 +28,7 @@ class Menu extends Component {
                         <span />
                     </div>
                     <div className="title">
-                        <span>Beer catalog</span>
+                        <span>x</span>
                     </div>
                 </div>
                 <MenuLinks hideMenu={this.toggleMenu} menuStatus={menuStatus} />

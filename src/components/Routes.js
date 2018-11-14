@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router";
 
 import Favorites from "./pages/Favorites";
 import Home from "./pages/Home";
+import BeerDetail from "./pages/BeerDetail";
 
 export default class Routes extends Component {
     render() {
@@ -11,6 +12,7 @@ export default class Routes extends Component {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/favorites" component={Favorites} />
+                    <Route exact path="/beer/:id" component={BeerDetail} />
                 </Switch>
             </div>
         );

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import BeerStore from "../stores/BeerStore";
 import Paginator from "../widgets/Paginator";
-import FavoriteBeerCard from "../widgets/FavoriteBeerCard";
+import FavoriteBeerCard from "../widgets/cards/FavoriteBeerCard";
 import { getFavorites } from "../utils/Tools";
 import { PAGINATION_FAVORITES } from "../constants/app";
 

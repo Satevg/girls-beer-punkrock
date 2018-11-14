@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import Like from "../icons/Like";
-import { getFavorites, setFavorites } from "../utils/Tools";
+import AddRemoveFavoriteButton from "../../widgets/html/AddRemoveFavoriteButton";
+import { getFavorites, setFavorites } from "../../utils/Tools";
+import { Link } from "react-router-dom";
 
 class BeerCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            render: null,
+            render: false,
         };
     }
 
@@ -19,26 +20,29 @@ class BeerCard extends Component {
             favorites.push(beerId);
         }
         setFavorites(favorites);
-        this.setState({ render: !this.state.render }); // rerender component
+    };
+
+    reRender = () => {
+        this.setState({ render: !this.state.render });
     };
 
     render() {
         let item = this.props.item;
-        let favorites = getFavorites();
-        let wouldIDrinkItOnMonday = favorites.includes(item.id);
 
         return (
-            <div className="beer-card card col s3">
+            <div className="beer-card card col s4">
                 <div className="card-image">
                     <img className="beer-card__image" alt={item.name} src={item.image_url} />
                 </div>
                 <div className="card-content">
                     <span className="beer-card__title">{item.name}</span>
-                    <div className="beer-card__tagline" />
+                    <div className="beer-card__tagline">{item.tagline}</div>
                 </div>
                 <div className="card-action beer-card__action">
-                    <a href="#">Open</a>
-                    <Like onClick={() => this.toggleFavorite(item.id)} favorite={wouldIDrinkItOnMonday} />
+                    <Link to={`/beer/${item.id}`} className="waves-effect waves-light btn-small">
+                        Open
+                    </Link>
+                    <AddRemoveFavoriteButton id={item.id} reRender={this.reRender} />
                 </div>
             </div>
         );

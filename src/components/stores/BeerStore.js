@@ -40,6 +40,11 @@ class BeerStore {
         this.request("GET", `${API_HOST}?${this.createQueryParams(qs)}`);
         return this.data;
     }
+
+    getBeer(id) {
+        this.request("GET", `${API_HOST}/${id}`);
+        return this.data;
+    }
 }
 
 const beerStore = new BeerStore();

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import BeerStore from "../stores/BeerStore";
-import BeerCard from "../widgets/BeerCard";
+import BeerCard from "../widgets/cards/BeerCard";
 import Spinner from "../icons/Spinner";
 import SearchForm from "../forms/SearchForm";
 import ResultsFilter from "../forms/ResultsFilter";
@@ -82,6 +82,7 @@ export default class Home extends Component {
                 {resultExist || this.pinFilter ? <ResultsFilter performSearch={this.performSearch} /> : null}
 
                 <div className="row">
+                    <div className="col s12">
                     {resultExist ? (
                         this.state.beers.map((beer, i) => {
                             return <BeerCard key={i} item={beer} />;
@@ -91,6 +92,7 @@ export default class Home extends Component {
                             <h4>No results found</h4>
                         </div>
                     ) : null}
+                    </div>
                 </div>
                 {this.state.isLoading ? (
                     <div className="spinner">

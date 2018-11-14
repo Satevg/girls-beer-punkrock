@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Range from "../widgets/Range";
+import Range from "../widgets/html/Range";
 
 class ResultsFilter extends Component {
     constructor(props) {

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { getFavorites, setFavorites } from "../utils/Tools";
+import { getFavorites, setFavorites } from "../../utils/Tools";
+import { Link } from "react-router-dom";
 
 class FavoriteBeerCard extends Component {
     constructor(props) {
@@ -31,9 +32,11 @@ class FavoriteBeerCard extends Component {
                             <p className="favorite-beer-card__description">{item.description}</p>
 
                             <div className="favorite-beer-card__actions">
-                                <button className="favorite-beer-card__button waves-effect waves-light btn-small">
-                                    Open
-                                </button>
+                                <Link to={`/beer/${item.id}`}>
+                                    <button className="favorite-beer-card__button waves-effect waves-light btn-small">
+                                        Open
+                                    </button>
+                                </Link>
                                 <button
                                     className="favorite-beer-card__button waves-effect waves-light btn-small"
                                     onClick={() => this.removeFavorite(item.id)}
