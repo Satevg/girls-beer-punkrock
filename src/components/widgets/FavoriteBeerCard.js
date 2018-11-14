@@ -31,7 +31,9 @@ class FavoriteBeerCard extends Component {
                             <p className="favorite-beer-card__description">{item.description}</p>
 
                             <div className="favorite-beer-card__actions">
-                                <button className="favorite-beer-card__button waves-effect waves-light btn-small">Open</button>
+                                <button className="favorite-beer-card__button waves-effect waves-light btn-small">
+                                    Open
+                                </button>
                                 <button
                                     className="favorite-beer-card__button waves-effect waves-light btn-small"
                                     onClick={() => this.removeFavorite(item.id)}

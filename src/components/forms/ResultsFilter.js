@@ -29,13 +29,13 @@ class ResultsFilter extends Component {
     render() {
         return (
             <div>
-                <div className="row serch-filter__row">
+                <div className="row search-filter__row">
                     <div className="col s12 center">
                         <h5>Filter results</h5>
                     </div>
                 </div>
 
-                <div className="row serch-filter__row">
+                <div className="row search-filter__row">
                     <div className="col s5">
                         <div className="right">
                             <p className="search-filter__label">
@@ -55,7 +55,7 @@ class ResultsFilter extends Component {
                     </div>
                 </div>
 
-                <div className="row serch-filter__row">
+                <div className="row search-filter__row">
                     <div className="col s5">
                         <div className="right">
                             <p className="search-filter__label">
@@ -68,7 +68,7 @@ class ResultsFilter extends Component {
                     </div>
                 </div>
 
-                <div className="row serch-filter__row">
+                <div className="row search-filter__row">
                     <div className="col s5">
                         <div className="right">
                             <p className="search-filter__label">
