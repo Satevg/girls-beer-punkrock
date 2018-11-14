@@ -25,7 +25,7 @@ class AddRemoveFavoriteButton extends Component {
 
         return (
             <a className="waves-effect waves-light btn-small" onClick={() => this.toggleFavorite(this.props.id)}>
-                {wouldIDrinkItOnMonday ? "Save" : "Delete"}
+                {wouldIDrinkItOnMonday ? "Remove favorite" : "Add favorite"}
             </a>
         );
     }

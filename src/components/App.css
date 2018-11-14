@@ -17,7 +17,7 @@ body {
 .menubar span {
     display: inline-block;
     position: absolute;
-    left: 50%;
+    left: 33%;
     transform: translateX(-50%);
     font-weight: 300;
     font-size: 2em;
@@ -146,9 +146,9 @@ li a {
     margin-left: 45%;
 }
 
-.beer-card {
-    height: 500px;
-}
+/*.beer-card {*/
+    /*height: 500px;*/
+/*}*/
 
 .beer-card__image, .favorite-beer-card__image {
     height: auto;
@@ -186,6 +186,9 @@ li a {
 
 .favorite-beer-card__actions {
     margin: 15px 0px 0px;
+}
+.beer-card__action > a {
+    margin: 5px;
 }
 
 .search {

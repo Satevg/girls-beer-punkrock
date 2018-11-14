@@ -12,10 +12,11 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-        let item = this.beerStore.getBeer(this.id);
-        if (item !== null) {
-            this.setState({ item: item[0] });
-        }
+        this.beerStore.getBeer(this.id).then(item => {
+            if (item !== null) {
+                this.setState({ item: item[0] });
+            }
+        });
     }
 
     reRender = () => {

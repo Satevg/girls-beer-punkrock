@@ -41,10 +41,11 @@ export default class Home extends Component {
         queryParams["beer_name"] = this.searchString;
         queryParams["page"] = page;
 
-        let moreBeers = this.beerStore.searchBeers(queryParams);
-        Array.prototype.push.apply(this.state.beers, moreBeers);
-        if (moreBeers.length === 0) this.stopSearch = true;
-        this.setState({ page: page, isLoading: false });
+        this.beerStore.searchBeers(queryParams).then(moreBeers => {
+            Array.prototype.push.apply(this.state.beers, moreBeers);
+            if (moreBeers.length === 0) this.stopSearch = true;
+            this.setState({ page: page, isLoading: false });
+        });
     };
 
     performSearch = (value = null, additional_filters = this.state.defaultFilters) => {
@@ -62,8 +63,9 @@ export default class Home extends Component {
         queryParams["beer_name"] = this.searchString;
         queryParams["page"] = 1;
 
-        let results = this.beerStore.searchBeers(queryParams);
-        this.setState({ beers: results, page: 1, isLoading: false });
+        this.beerStore.searchBeers(queryParams).then(results => {
+            this.setState({ beers: results, page: 1, isLoading: false });
+        });
     };
 
     trackScrolling = () => {
@@ -83,15 +85,15 @@ export default class Home extends Component {
 
                 <div className="row">
                     <div className="col s12">
-                    {resultExist ? (
-                        this.state.beers.map((beer, i) => {
-                            return <BeerCard key={i} item={beer} />;
-                        })
-                    ) : this.searchString ? (
-                        <div className="center">
-                            <h4>No results found</h4>
-                        </div>
-                    ) : null}
+                        {resultExist ? (
+                            this.state.beers.map((beer, i) => {
+                                return <BeerCard key={i} item={beer} />;
+                            })
+                        ) : this.searchString ? (
+                            <div className="center">
+                                <h4>No results found</h4>
+                            </div>
+                        ) : null}
                     </div>
                 </div>
                 {this.state.isLoading ? (

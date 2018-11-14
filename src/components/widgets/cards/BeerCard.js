@@ -34,11 +34,11 @@ class BeerCard extends Component {
                 <div className="card-image">
                     <img className="beer-card__image" alt={item.name} src={item.image_url} />
                 </div>
-                <div className="card-content">
+                <div className="card-content center">
                     <span className="beer-card__title">{item.name}</span>
                     <div className="beer-card__tagline">{item.tagline}</div>
                 </div>
-                <div className="card-action beer-card__action">
+                <div className="card-action beer-card__action center">
                     <Link to={`/beer/${item.id}`} className="waves-effect waves-light btn-small">
                         Open
                     </Link>

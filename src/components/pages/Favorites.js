@@ -15,16 +15,19 @@ export default class Favorites extends Component {
         };
         this.favorites = getFavorites();
         this.beerStore = BeerStore;
+        this.isLoading = false;
     }
 
     componentDidMount() {
-        let beers = this.beerStore.getFavoriteBeers(this.favorites);
-        this.setState({
-            beers: beers,
+        this.isLoading = true;
+        this.beerStore.getFavoriteBeers(this.favorites).then(beers => {
+            this.setState({
+                beers: beers,
+            });
+            if (this.state.offset === null) {
+                this.filterBeers(1, beers);
+            }
         });
-        if (this.state.offset === null) {
-            this.filterBeers(1, beers);
-        }
     }
 
     removeFavoriteCard = beerId => {

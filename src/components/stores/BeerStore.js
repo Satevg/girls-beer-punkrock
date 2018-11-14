@@ -1,29 +1,12 @@
 import { API_HOST } from "../constants/app";
+import requestHelper from "../helpers/HttpRequestHelper";
 
 class BeerStore {
     constructor() {
-        this.data = null;
+        this.httpHelper = requestHelper;
     }
 
-    request(method, url) {
-        let xhr = new XMLHttpRequest();
-        xhr.open(method, url, false);
-        xhr.onload = function(e) {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    this.data = JSON.parse(xhr.responseText);
-                } else {
-                    console.error(xhr.statusText);
-                }
-            }
-        }.bind(this);
-        xhr.onerror = function(e) {
-            console.error(xhr.statusText);
-        };
-        xhr.send(null);
-    }
-
-    createQueryParams(params) {
+    _createQueryParamsFromDict(params) {
         return Object.keys(params)
             .map(k => `${k}=${encodeURI(params[k])}`)
             .join("&");
@@ -31,19 +14,15 @@ class BeerStore {
 
     getFavoriteBeers(ids) {
         let searchFavorites = ids.join("|");
-        let url = `${API_HOST}?ids=${searchFavorites}`;
-        this.request("GET", url);
-        return this.data; // TODO: fix in 'fetch version', can lead to problems if there was error on request
+        return this.httpHelper.request("GET", `${API_HOST}?ids=${searchFavorites}`);
     }
 
     searchBeers(qs) {
-        this.request("GET", `${API_HOST}?${this.createQueryParams(qs)}`);
-        return this.data;
+        return this.httpHelper.request("GET", `${API_HOST}?${this._createQueryParamsFromDict(qs)}`);
     }
 
     getBeer(id) {
-        this.request("GET", `${API_HOST}/${id}`);
-        return this.data;
+        return this.httpHelper.request("GET", `${API_HOST}/${id}`);
     }
 }
 
