@@ -6,13 +6,29 @@ import SearchForm from "../forms/SearchForm";
 import ResultsFilter from "../forms/ResultsFilter";
 import { PAGINATION_HOME_SEARCH } from "../constants/app";
 
-export default class Home extends Component {
+import { connect } from "react-redux";
+import { addBeers, clearBeers, setBeers } from "../actions/index";
+
+const mapStateToProps = state => {
+    return {
+        beers: state.beers,
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addBeers: beers => dispatch(addBeers(beers)),
+        setBeers: beers => dispatch(setBeers(beers)),
+        clearBeers: () => dispatch(clearBeers()),
+    };
+};
+
+class ConnectedHome extends Component {
     constructor(props) {
         super(props);
         this.beerStore = BeerStore;
         this.state = {
             page: 1,
-            beers: [],
             isLoading: false,
             defaultFilters: { abv_lt: 14, ibu_lt: 120, ebc_lt: 80 },
         };
@@ -34,25 +50,39 @@ export default class Home extends Component {
     }
 
     fetchMoreBeers = () => {
-        this.setState({ isLoading: true });
-        let page = this.state.page + 1;
-        let queryParams = this.state.defaultFilters;
-        queryParams["per_page"] = PAGINATION_HOME_SEARCH;
-        queryParams["beer_name"] = this.searchString;
-        queryParams["page"] = page;
+        if (this.searchString && !this.state.isLoading) {
+            this.setState({ isLoading: true });
+            let page = this.state.page + 1;
+            let queryParams = this.state.defaultFilters;
+            queryParams["per_page"] = PAGINATION_HOME_SEARCH;
+            queryParams["beer_name"] = this.searchString;
+            queryParams["page"] = page;
 
-        this.beerStore.searchBeers(queryParams).then(moreBeers => {
-            Array.prototype.push.apply(this.state.beers, moreBeers);
-            if (moreBeers.length === 0) this.stopSearch = true;
-            this.setState({ page: page, isLoading: false });
-        });
+            this.beerStore
+                .searchBeers(queryParams)
+                .then(moreBeers => {
+                    this.props.addBeers(moreBeers);
+                    if (moreBeers.length === 0) this.stopSearch = true;
+                })
+                .catch(err => {
+                    page = this.state.page;
+                    this.stopSearch = true;
+                })
+                .finally(() => {
+                    this.setState({ page: page, isLoading: false });
+                });
+        }
     };
 
     performSearch = (value = null, additional_filters = this.state.defaultFilters) => {
+        // if value === null, then it's search for additional beers (infinite scroll);
+        // as search string - value that have been used before
+
         this.setState({ isLoading: true, defaultFilters: additional_filters });
         if (value === null) {
             this.pinFilter = true;
         } else {
+            this.props.clearBeers();
             this.searchString = value;
             this.pinFilter = false;
         }
@@ -63,9 +93,14 @@ export default class Home extends Component {
         queryParams["beer_name"] = this.searchString;
         queryParams["page"] = 1;
 
-        this.beerStore.searchBeers(queryParams).then(results => {
-            this.setState({ beers: results, page: 1, isLoading: false });
-        });
+        this.beerStore
+            .searchBeers(queryParams)
+            .then(results => {
+                value === null ? this.props.addBeers(results) : this.props.setBeers(results);
+            })
+            .finally(() => {
+                this.setState({ page: 1, isLoading: false });
+            });
     };
 
     trackScrolling = () => {
@@ -76,7 +111,7 @@ export default class Home extends Component {
     };
 
     render() {
-        const resultExist = !!this.state.beers.length;
+        const resultExist = !!this.props.beers.length;
 
         return (
             <div>
@@ -86,7 +121,7 @@ export default class Home extends Component {
                 <div className="row">
                     <div className="col s12">
                         {resultExist ? (
-                            this.state.beers.map((beer, i) => {
+                            this.props.beers.map((beer, i) => {
                                 return <BeerCard key={i} item={beer} />;
                             })
                         ) : this.searchString ? (
@@ -105,3 +140,10 @@ export default class Home extends Component {
         );
     }
 }
+
+const Home = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ConnectedHome);
+
+export default Home;

@@ -22,15 +22,19 @@ export default class Favorites extends Component {
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        this.beerStore.getFavoriteBeers(this.favorites).then(beers => {
-            this.setState({
-                beers: beers,
-                isLoading: false,
+        this.beerStore
+            .getFavoriteBeers(this.favorites)
+            .then(beers => {
+                this.setState({
+                    beers: beers,
+                });
+                if (this.state.offset === null) {
+                    this.filterBeers(1, beers);
+                }
+            })
+            .finally(() => {
+                this.setState({ isLoading: false });
             });
-            if (this.state.offset === null) {
-                this.filterBeers(1, beers);
-            }
-        });
     }
 
     removeFavoriteCard = beerId => {

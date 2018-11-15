@@ -5,6 +5,12 @@ import DefaultLayout from "../components/layout/Default";
 
 import "./App.css";
 
+// For Debug
+// import ReduxStore from "../components/stores/ReduxStore";
+// import { addBeers } from "../components/actions/index";
+// window.store = ReduxStore;
+// window.addBeers = addBeers;
+
 class App extends Component {
     render() {
         return (

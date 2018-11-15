@@ -14,11 +14,17 @@ export default class Home extends Component {
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        this.beerStore.getBeer(this.id).then(item => {
-            if (item !== null) {
-                this.setState({ item: item[0], isLoading: false });
-            }
-        });
+        let item =  this.beerStore.getBeer(this.id);
+        this.beerStore
+            .getBeer(this.id)
+            .then(item => {
+                if (item !== null) {
+                    this.setState({ item: item[0] });
+                }
+            })
+            .finally(() => {
+                this.setState({ isLoading: false });
+            });
     }
 
     reRender = () => {
