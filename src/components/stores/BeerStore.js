@@ -1,5 +1,6 @@
 import { API_HOST } from "../constants/app";
 import requestHelper from "../helpers/FetchRequestHelper";
+import 'regenerator-runtime/runtime';
 
 class BeerStore {
     constructor() {
