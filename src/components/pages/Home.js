@@ -27,10 +27,11 @@ class ConnectedHome extends Component {
     constructor(props) {
         super(props);
         this.beerStore = BeerStore;
+        this.initialFilters = { abv_lt: 14, ibu_lt: 120, ebc_lt: 80 };
         this.state = {
             page: 1,
             isLoading: false,
-            defaultFilters: { abv_lt: 14, ibu_lt: 120, ebc_lt: 80 },
+            defaultFilters: this.initialFilters,
         };
         this.stopSearch = false;
         this.searchString = "";
@@ -83,6 +84,7 @@ class ConnectedHome extends Component {
             this.pinFilter = true;
         } else {
             this.props.clearBeers();
+            this.setState({ defaultFilters: this.initialFilters });
             this.searchString = value;
             this.pinFilter = false;
         }
@@ -96,7 +98,7 @@ class ConnectedHome extends Component {
         this.beerStore
             .searchBeers(queryParams)
             .then(results => {
-                value === null ? this.props.addBeers(results) : this.props.setBeers(results);
+                this.props.setBeers(results);
             })
             .finally(() => {
                 this.setState({ page: 1, isLoading: false });

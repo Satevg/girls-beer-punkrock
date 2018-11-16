@@ -14,7 +14,7 @@ export default class Home extends Component {
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        let item =  this.beerStore.getBeer(this.id);
+        let item = this.beerStore.getBeer(this.id);
         this.beerStore
             .getBeer(this.id)
             .then(item => {

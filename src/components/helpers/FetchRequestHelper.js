@@ -14,7 +14,7 @@ class ConnectedFetchRequestHelper extends React.Component {
     }
 
     request = (method, url) => {
-        console.log('REA')
+        console.log("REA");
         // this.props.setLoading(true);
         fetch(url, { method: method })
             .then(response => {
@@ -27,7 +27,7 @@ class ConnectedFetchRequestHelper extends React.Component {
             .finally(() => {
                 // this.props.setLoading(false);
             });
-    }
+    };
 }
 
 // const FetchRequestHelper = connect(
@@ -36,6 +36,5 @@ class ConnectedFetchRequestHelper extends React.Component {
 // )(ConnectedFetchRequestHelper);
 
 const FetchRequestHelper = ConnectedFetchRequestHelper;
-
 
 export default FetchRequestHelper;
