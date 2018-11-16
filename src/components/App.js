@@ -3,7 +3,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./Routes";
 import DefaultLayout from "../components/layout/Default";
 
-import "./App.css";
+import "./styles/App.css";
+import "./styles/materialize.min.css";
 
 // For Debug
 // import ReduxStore from "../components/stores/ReduxStore";
