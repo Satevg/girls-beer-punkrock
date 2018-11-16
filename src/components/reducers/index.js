@@ -10,7 +10,6 @@ const rootReducer = (state = initialState, action) => {
         case SET_BEERS:
             return { ...state, beers: action.payload };
         case ADD_BEERS:
-            console.log(state);
             return { ...state, beers: [...state.beers, ...action.payload] };
         case CLEAR_BEERS:
             return { ...state, beers: [] };

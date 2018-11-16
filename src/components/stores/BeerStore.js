@@ -1,5 +1,5 @@
 import { API_HOST } from "../constants/app";
-import requestHelper from "../helpers/XmlHttpRequestHelper";
+import requestHelper from "../helpers/FetchRequestHelper";
 
 class BeerStore {
     constructor() {
