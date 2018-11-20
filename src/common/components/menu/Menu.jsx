@@ -1,5 +1,6 @@
-import './menu.css';
 import React, { Component } from 'react';
+
+import './menu.css';
 import MenuLinks from './MenuLinks';
 
 class Menu extends Component {

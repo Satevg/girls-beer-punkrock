@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class MenuLinks extends Component {
   render() {
@@ -21,5 +22,10 @@ class MenuLinks extends Component {
     );
   }
 }
+
+MenuLinks.propTypes = {
+  menuStatus: PropTypes.string,
+  hideMenu: PropTypes.func.isRequired
+};
 
 export default MenuLinks;

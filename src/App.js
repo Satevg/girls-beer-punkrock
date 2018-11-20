@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+
+import './common/styles/materialize.min.css';
 import Routes from './Routes';
 import DefaultLayout from './common/components/layout/Default';
 
-import './common/styles/materialize.min.css';
 
 // For Debug
 // import ReduxStore from "../components/stores/ReduxStore";

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { getFavorites, setFavorites } from '../../utils/Tools';
 
 class AddRemoveFavoriteButton extends Component {
@@ -33,5 +35,10 @@ class AddRemoveFavoriteButton extends Component {
     );
   }
 }
+
+AddRemoveFavoriteButton.propTypes = {
+  id: PropTypes.number.isRequired,
+  reRender: PropTypes.func.isRequired
+};
 
 export default AddRemoveFavoriteButton;

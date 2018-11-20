@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+
 import BeerStore from '../../store/BeerStore/BeerStore';
+import FavoriteBeerCard from './favorite-beer-card';
 import Paginator from '../../common/components/paginator';
-import FavoriteBeerCard from './favorite-beer-card/';
+import Spinner from '../../common/components/spinner';
 import { getFavorites } from '../../common/utils/Tools';
 import { PAGINATION_FAVORITES } from '../../common/constants/app';
-import Spinner from '../../common/components/spinner/';
 
 export default class Favorites extends Component {
   constructor(props) {

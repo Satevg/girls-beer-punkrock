@@ -1,7 +1,9 @@
-import './favorite-beer-card.css';
 import React, { Component } from 'react';
-import { getFavorites, setFavorites } from '../../../common/utils/Tools';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import './favorite-beer-card.css';
+import { getFavorites, setFavorites } from '../../../common/utils/Tools';
 
 class FavoriteBeerCard extends Component {
   constructor(props) {
@@ -56,5 +58,10 @@ class FavoriteBeerCard extends Component {
     );
   }
 }
+
+FavoriteBeerCard.propTypes = {
+  item: PropTypes.object.isRequired,
+  removeFavoriteCard: PropTypes.func.isRequired
+};
 
 export default FavoriteBeerCard;

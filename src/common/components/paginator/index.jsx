@@ -1,7 +1,8 @@
-import './paginator.css';
-
 import React, { Component } from 'react';
 import { PAGINATION_FAVORITES } from '../../constants/app';
+import PropTypes from 'prop-types';
+
+import './paginator.css';
 
 class Paginator extends Component {
   constructor(props) {
@@ -62,5 +63,10 @@ class Paginator extends Component {
     );
   }
 }
+
+Paginator.propTypes = {
+  total: PropTypes.number.isRequired,
+  filterBeers: PropTypes.func.isRequired
+};
 
 export default Paginator;

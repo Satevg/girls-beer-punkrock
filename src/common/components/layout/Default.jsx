@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import Menu from '../menu/Menu';
 
 class Default extends Component {

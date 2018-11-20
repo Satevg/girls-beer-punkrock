@@ -1,9 +1,9 @@
-import './beer-detail.css';
-
 import React, { Component } from 'react';
-import BeerStore from '../../store/BeerStore/BeerStore';
+
+import './beer-detail.css';
 import AddRemoveFavoriteButton from '../../common/components/add-remove-favorite-button/index';
-import Spinner from '../../common/components/spinner/';
+import BeerStore from '../../store/BeerStore/BeerStore';
+import Spinner from '../../common/components/spinner';
 
 export default class Home extends Component {
   constructor(props) {

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router';
 
-import Favorites from './modules/favorites/';
-import Home from './modules/home/';
-import BeerDetail from './modules/beer-detail/';
+import BeerDetail from './modules/beer-detail';
+import Favorites from './modules/favorites';
+import Home from './modules/home';
 
 export default class Routes extends Component {
   render() {
