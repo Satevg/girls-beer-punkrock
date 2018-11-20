@@ -5,7 +5,6 @@ import './common/styles/materialize.min.css';
 import Routes from './Routes';
 import DefaultLayout from './common/components/layout/Default';
 
-
 // For Debug
 // import ReduxStore from "../components/stores/ReduxStore";
 // import addBeers from "../components/actions/index";

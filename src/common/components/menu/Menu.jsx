@@ -18,7 +18,7 @@ class Menu extends Component {
   };
 
   render() {
-    let menuStatus = this.state.isOpen ? 'isopen' : '';
+    const menuStatus = this.state.isOpen ? 'isopen' : '';
     return (
       <div ref="root">
         <div className="menubar">

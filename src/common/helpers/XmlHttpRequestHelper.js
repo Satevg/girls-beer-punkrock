@@ -1,7 +1,7 @@
 class HttpRequestHelper {
   request(method, url) {
     return new Promise((resolve, reject) => {
-      let xhr = new XMLHttpRequest();
+      const xhr = new XMLHttpRequest();
       xhr.open(method, url, true);
       xhr.onload = function() {
         if (xhr.readyState === 4) {

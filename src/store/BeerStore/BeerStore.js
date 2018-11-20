@@ -6,11 +6,10 @@ class BeerStore {
     this.httpHelper = requestHelper;
   }
 
-  _createQueryParamsFromDict(params) {
-    return Object.keys(params)
+  createQueryParamsFromDict = params =>
+    Object.keys(params)
       .map(k => `${k}=${encodeURI(params[k])}`)
       .join('&');
-  }
 
   getFavoriteBeers(ids) {
     const searchFavorites = ids.join('|');
@@ -18,7 +17,7 @@ class BeerStore {
   }
 
   searchBeers(qs) {
-    return this.httpHelper.request('GET', `${API_HOST}?${this._createQueryParamsFromDict(qs)}`);
+    return this.httpHelper.request('GET', `${API_HOST}?${this.createQueryParamsFromDict(qs)}`);
   }
 
   getBeer(id) {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { PAGINATION_FAVORITES } from '../../constants/app';
 import PropTypes from 'prop-types';
+import { PAGINATION_FAVORITES } from '../../constants/app';
 
 import './paginator.css';
 
@@ -39,7 +39,7 @@ class Paginator extends Component {
 
         {[...Array(this.totalPages).keys()].map(i => {
           let classnames = 'waves-effect';
-          let humanPage = i + 1;
+          const humanPage = i + 1;
           if (this.state.currentPage === humanPage) classnames += ' active';
           return (
             <li key={i} className={classnames}>

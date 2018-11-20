@@ -20,7 +20,7 @@ class ResultsFilter extends Component {
   // 3. Color by EBC with range from 4 to 80.
 
   handleValue = event => {
-    let dict = {};
+    const dict = {};
     dict[event.target.name] = event.target.value;
     this.setState(dict);
     if (this.timeout) clearTimeout(this.timeout);

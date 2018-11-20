@@ -68,6 +68,8 @@ export default class Favorites extends Component {
   };
 
   render() {
+    const favoriteBeers = !!this.state.beers.length;
+
     return this.state.beers.length ? (
       <div>
         <h3>Your favorites</h3>

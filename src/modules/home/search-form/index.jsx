@@ -10,7 +10,7 @@ class SearchForm extends Component {
 
   handleChange = event => {
     event.preventDefault();
-    let searchText = event.target.value;
+    const searchText = event.target.value;
     if (event.target.value.length >= 3 || event.charCode === 13) {
       if (this.timeout) clearTimeout(this.timeout);
       // prevent frequent search requests when typing fast

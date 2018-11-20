@@ -3,7 +3,16 @@
   "plugins": ["prettier"],
   "parser": "babel-eslint",
   "rules": {
-    "prettier/prettier": ["error"]
+    "prettier/prettier": ["error"],
+    "react/destructuring-assignment": ["never"],
+    "react/jsx-one-expression-per-line": [false],
+    "prefer-destructuring": ["off"],
+    "react/forbid-prop-types": ["array"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  },
+  "env": {
+    "browser": true,
+    "node": true
   },
   "settings": {
     "import/resolver": {

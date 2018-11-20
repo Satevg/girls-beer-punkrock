@@ -1,9 +1,4 @@
-import {
-  ADD_BEERS,
-  CLEAR_BEERS,
-  SET_BEERS,
-  SET_LOADING
-} from '../actions/action-types';
+import { ADD_BEERS, CLEAR_BEERS, SET_BEERS, SET_LOADING } from '../actions/action-types';
 
 const initialState = {
   beers: [],

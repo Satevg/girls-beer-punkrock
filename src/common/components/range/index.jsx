@@ -30,10 +30,10 @@ Range.propTypes = {
 
 Range.defaultProps = {
   name: 'default',
-  min: 0,
-  max: 120,
-  step: 1,
-  defaultValue: 120
+  min: '0',
+  max: '120',
+  step: '1',
+  defaultValue: '120'
 };
 
 export default Range;

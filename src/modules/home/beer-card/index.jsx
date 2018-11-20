@@ -15,8 +15,8 @@ class BeerCard extends Component {
   }
 
   toggleFavorite = beerId => {
-    let favorites = getFavorites();
-    let index = favorites.indexOf(beerId);
+    const favorites = getFavorites();
+    const index = favorites.indexOf(beerId);
     if (favorites.indexOf(beerId) > -1) {
       favorites.splice(index, 1);
     } else {
@@ -26,11 +26,13 @@ class BeerCard extends Component {
   };
 
   reRender = () => {
-    this.setState({ render: !this.state.render });
+    this.setState(prevState => ({
+      render: !prevState.render
+    }));
   };
 
   render() {
-    let item = this.props.item;
+    const item = this.props.item;
 
     return (
       <div className="beer-card card col s4">

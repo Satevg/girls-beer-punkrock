@@ -6,16 +6,9 @@ import './favorite-beer-card.css';
 import { getFavorites, setFavorites } from '../../../common/utils/Tools';
 
 class FavoriteBeerCard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      render: null
-    };
-  }
-
   removeFavorite = beerId => {
-    let favorites = getFavorites();
-    let index = favorites.indexOf(beerId);
+    const favorites = getFavorites();
+    const index = favorites.indexOf(beerId);
     if (favorites.indexOf(beerId) > -1) {
       favorites.splice(index, 1);
     }
@@ -24,7 +17,7 @@ class FavoriteBeerCard extends Component {
   };
 
   render() {
-    let item = this.props.item;
+    const item = this.props.item;
     return (
       <div className="favorite-beer-card card s12">
         <div className="card-content">

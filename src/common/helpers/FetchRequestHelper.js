@@ -1,11 +1,7 @@
 class FetchRequestHelper {
-  json = response => {
-    return response.json();
-  };
+  json = response => response.json();
 
-  request = (method, url) => {
-    return fetch(url, { method: method }).then(this.json);
-  };
+  request = (method, url) => fetch(url, { method }).then(this.json);
 }
 
 const requestHelper = new FetchRequestHelper();

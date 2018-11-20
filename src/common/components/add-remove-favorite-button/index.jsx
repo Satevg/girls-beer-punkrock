@@ -10,8 +10,8 @@ class AddRemoveFavoriteButton extends Component {
   }
 
   toggleFavorite = beerId => {
-    let favorites = getFavorites();
-    let index = favorites.indexOf(beerId);
+    const favorites = getFavorites();
+    const index = favorites.indexOf(beerId);
     if (favorites.indexOf(beerId) > -1) {
       favorites.splice(index, 1);
     } else {
@@ -22,8 +22,8 @@ class AddRemoveFavoriteButton extends Component {
   };
 
   render() {
-    let favorites = getFavorites();
-    let wouldIDrinkItOnMonday = favorites.includes(this.props.id);
+    const favorites = getFavorites();
+    const wouldIDrinkItOnMonday = favorites.includes(this.props.id);
 
     return (
       <a
