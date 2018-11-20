@@ -48,6 +48,8 @@
     "redux-saga": "^0.16.2",
     "regenerator-transform": "^0.13.3",
     "resolve": "1.8.1",
+    "react-redux": "^5.1.1",
+    "redux": "^4.0.1",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.0",
     "terser-webpack-plugin": "1.1.0",
@@ -60,8 +62,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "test": "node scripts/test.js",
-    "prettier": "prettier --config .prettierrc.json --write 'src/**/*.js'",
-    "eslint": "eslint ./src",
+    "prettier": "prettier --config .prettierrc.json --write 'src/**/*.jsx'",
+    "eslint": "eslint --ext .js --ext .jsx ./src || true",
     "build": "webpack --config webpack.config.production.js"
   },
   "eslintConfig": {
@@ -83,10 +85,11 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
     "css-loader": "^1.0.1",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-prettier": "^3.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "react-redux": "^5.1.1",
-    "redux": "^4.0.1",
     "rimraf": "^2.6.2",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
