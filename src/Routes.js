@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
 
-import BeerDetail from './modules/beer-detail';
-import Favorites from './modules/favorites';
-import Home from './modules/home';
+import BeerDetail from './modules/beer-detail/DetailPage';
+import Favorites from './modules/favorites/FavoritePage';
+import Home from './modules/home/components/SearchPage';
 
 const Routes = () => (
   <div>

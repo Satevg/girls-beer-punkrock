@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import './favorite-beer-card.css';
+import './index.css';
 import { getFavorites, setFavorites } from '../../../common/utils/Tools';
 
 class FavoriteBeerCard extends Component {

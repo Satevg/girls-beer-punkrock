@@ -5,7 +5,6 @@ class SearchForm extends Component {
   constructor(props) {
     super(props);
     this.timeout = 0;
-    this.state = { abv_lt: 14, ibu_lt: 120, ebc_lt: 80 };
   }
 
   handleChange = event => {

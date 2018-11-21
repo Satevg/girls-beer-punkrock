@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import './search-filter.css';
-import Range from '../../../common/components/range';
+import './index.css';
+import Range from '../../../../common/components/range';
 
 class ResultsFilter extends Component {
   constructor(props) {

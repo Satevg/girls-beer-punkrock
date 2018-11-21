@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import './beer-card.css';
-import AddRemoveFavoriteButton from '../../../common/components/add-remove-favorite-button';
-import { getFavorites, setFavorites } from '../../../common/utils/Tools';
+import './index.css';
+import AddRemoveFavoriteButton from '../../../../common/components/add-remove-favorite-button';
+import { getFavorites, setFavorites } from '../../../../common/utils/Tools';
 
 class BeerCard extends Component {
   constructor(props) {

@@ -28,4 +28,8 @@ MenuLinks.propTypes = {
   hideMenu: PropTypes.func.isRequired
 };
 
+MenuLinks.defaultProps = {
+  menuStatus: ''
+};
+
 export default MenuLinks;

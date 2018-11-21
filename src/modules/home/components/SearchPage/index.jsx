@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import BeerCard from './beer-card';
-import BeerStore from '../../store/BeerStore/BeerStore';
-import SearchForm from './search-form';
-import Spinner from '../../common/components/spinner';
-import ResultsFilter from './results-filter';
-import { PAGINATION_HOME_SEARCH } from '../../common/constants/app';
-import { addBeers, clearBeers, setBeers } from '../../store/ReduxStore/actions/index';
+import BeerCard from '../BeerCard';
+import BeerStore from '../../../../data-access/services/beerService';
+import SearchForm from '../SearchForm';
+import Spinner from '../../../../common/components/spinner';
+import ResultsFilter from '../ResultsFilter';
+import { PAGINATION_HOME_SEARCH } from '../../../../common/constants/app';
+import { addBeers, clearBeers, setBeers } from '../../actions/index';
 
 const mapStateToProps = state => ({
   beers: state.beers

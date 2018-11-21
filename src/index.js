@@ -5,7 +5,7 @@ import * as serviceWorker from './serviceWorker';
 
 import './common/styles/index.css';
 import App from './App';
-import ReduxStore from './store/ReduxStore/ReduxStore';
+import ReduxStore from './store/ReduxStore/reduxStore';
 
 render(
   <Provider store={ReduxStore}>
