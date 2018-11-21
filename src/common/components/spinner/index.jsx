@@ -5,7 +5,7 @@ import './index.css';
 class Spinner extends Component {
     render() {
         return (
-            <div className="spinnerWrapper">
+            <div className="spinnerWrapper spinner">
                 <svg className="spinner" viewBox="0 0 128 128">
                     <g>
                         <circle cx="16" cy="64" r="16" fill="#273B5B" />

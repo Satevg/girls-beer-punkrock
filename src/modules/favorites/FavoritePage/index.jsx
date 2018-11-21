@@ -67,29 +67,42 @@ export default class Favorites extends Component {
         });
     };
 
+    renderNoFavorites = () => (this.state.isLoading ? <Spinner /> : <h3>You have no favorites</h3>);
+
+    renderFavorites = () => {
+        const favorites = this.state.filteredBeers.map(beer => (
+            <FavoriteBeerCard
+                removeFavoriteCard={this.removeFavoriteCard}
+                key={beer.id}
+                item={beer}
+            />
+        ));
+
+        return favorites;
+    };
+
+    renderPaginator = () => {
+        let component = null;
+        if (this.state.beers.length > 5) {
+            component = (
+                <Paginator filterBeers={this.filterBeers} total={this.state.beers.length} />
+            );
+        }
+
+        return component;
+    };
+
     render() {
-        return this.state.beers.length ? (
+        const favsExist = this.state.beers.length;
+
+        return !favsExist ? (
+            this.renderNoFavorites()
+        ) : (
             <div>
                 <h3>Your favorites</h3>
-                <div className="row">
-                    {this.state.filteredBeers.map(beer => (
-                        <FavoriteBeerCard
-                            removeFavoriteCard={this.removeFavoriteCard}
-                            key={beer.id}
-                            item={beer}
-                        />
-                    ))}
-                </div>
-                {this.state.beers.length > 5 ? (
-                    <Paginator filterBeers={this.filterBeers} total={this.state.beers.length} />
-                ) : null}
+                <div className="row">{this.renderFavorites()}</div>
+                {this.renderPaginator()}
             </div>
-        ) : this.state.isLoading ? (
-            <div className="spinner">
-                <Spinner />
-            </div>
-        ) : (
-            <h1>You have no favorite beers yet</h1>
         );
     }
 }

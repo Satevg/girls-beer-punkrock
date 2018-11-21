@@ -59,7 +59,7 @@ class ConnectedHome extends Component {
                     if (moreBeers.length === 0) this.stopSearch = true;
                 })
                 .catch(() => {
-                    page = this.state.page;
+                    ({ page } = this.state);
                     this.stopSearch = true;
                 })
                 .finally(() => {
@@ -109,13 +109,8 @@ class ConnectedHome extends Component {
 
     renderResults = resultExist => {
         if (this.state.isLoading) {
-            return (
-                <div className="spinner">
-                    <Spinner />
-                </div>
-            );
+            return <Spinner />;
         }
-
         let result = null;
         if (resultExist) {
             result = this.props.beers.map(beer => <BeerCard key={beer.id} item={beer} />);
