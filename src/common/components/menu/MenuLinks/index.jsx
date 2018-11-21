@@ -3,16 +3,21 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 class MenuLinks extends Component {
+    constructor() {
+        super();
+        this.btnRef = React.createRef();
+    }
+
     render() {
         return (
             <div className={this.props.menuStatus} id="menu">
                 <ul>
-                    <li ref="0">
+                    <li ref={this.btnRef}>
                         <Link to="/" onClick={this.props.hideMenu}>
                             Home
                         </Link>
                     </li>
-                    <li ref="1">
+                    <li ref={this.btnRef}>
                         <Link to="/favorites" onClick={this.props.hideMenu}>
                             Favorites
                         </Link>

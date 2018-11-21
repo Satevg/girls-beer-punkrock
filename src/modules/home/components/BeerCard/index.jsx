@@ -32,7 +32,7 @@ class BeerCard extends Component {
     };
 
     render() {
-        const item = this.props.item;
+        const { item } = this.props;
 
         return (
             <div className="beer-card card col s4">

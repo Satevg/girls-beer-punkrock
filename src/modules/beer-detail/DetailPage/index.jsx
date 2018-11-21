@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './index.css';
 import AddRemoveFavoriteButton from '../../../common/components/add-remove-favorite-button';
 import BeerStore from '../../../data-access/services/beerService';
 import Spinner from '../../../common/components/spinner';
 
-export default class Home extends Component {
+export default class DetailPage extends Component {
     constructor(props) {
         super(props);
         this.id = this.props.match.params.id;
@@ -28,11 +29,11 @@ export default class Home extends Component {
     }
 
     reRender = () => {
-        this.setState({ render: !this.state.render });
+        this.setState(prevState => ({ render: !prevState.render }));
     };
 
     render() {
-        const item = this.state.item;
+        const { item } = this.state;
 
         return (
             <div>
@@ -188,3 +189,11 @@ export default class Home extends Component {
         );
     }
 }
+
+DetailPage.propTypes = {
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            id: PropTypes.string.isRequired
+        })
+    })
+};

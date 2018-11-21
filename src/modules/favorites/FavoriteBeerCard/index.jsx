@@ -17,7 +17,7 @@ class FavoriteBeerCard extends Component {
     };
 
     render() {
-        const item = this.props.item;
+        const { item } = this.props;
 
         return (
             <div className="favorite-beer-card card s12">
@@ -30,12 +30,16 @@ class FavoriteBeerCard extends Component {
 
                             <div className="favorite-beer-card__actions">
                                 <Link to={`/beer/${item.id}`}>
-                                    <button className="favorite-beer-card__button waves-effect waves-light btn-small">
+                                    <button
+                                        className="favorite-beer-card__button waves-effect waves-light btn-small"
+                                        type="button"
+                                    >
                                         Open
                                     </button>
                                 </Link>
                                 <button
                                     className="favorite-beer-card__button waves-effect waves-light btn-small"
+                                    type="button"
                                     onClick={() => this.removeFavorite(item.id)}
                                 >
                                     REMOVE FAVORITE

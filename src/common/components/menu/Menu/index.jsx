@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import './menu.css';
-import MenuLinks from './MenuLinks';
+import './index.css';
+import MenuLinks from '../MenuLinks';
 
 class Menu extends Component {
     constructor(props) {
@@ -9,19 +9,20 @@ class Menu extends Component {
         this.state = {
             isOpen: false
         };
+        this.btnRef = React.createRef();
     }
 
     toggleMenu = () => {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
+        this.setState(prevState => ({
+            isOpen: !prevState.isOpen
+        }));
     };
 
     render() {
         const menuStatus = this.state.isOpen ? 'isopen' : '';
 
         return (
-            <div ref="root">
+            <div ref={this.btnRef}>
                 <div className="menubar">
                     <div className="hambclicker" onClick={this.toggleMenu} />
                     <div id="hambmenu" className={menuStatus}>

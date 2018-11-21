@@ -1,9 +1,9 @@
 class HttpRequestHelper {
-    request(method, url) {
-        return new Promise((resolve, reject) => {
+    request = (method, url) =>
+        new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
             xhr.open(method, url, true);
-            xhr.onload = function() {
+            xhr.onload = () => {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
                         resolve(JSON.parse(xhr.responseText));
@@ -12,15 +12,11 @@ class HttpRequestHelper {
                     }
                 }
             };
-            xhr.onerror = function() {
-                reject({
-                    status: xhr.status,
-                    statusText: xhr.statusText
-                });
+            xhr.onerror = () => {
+                reject(new Error(`${xhr.status} - ${xhr.text}`));
             };
             xhr.send();
         });
-    }
 }
 
 const requestHelper = new HttpRequestHelper();

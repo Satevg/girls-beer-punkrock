@@ -4,11 +4,6 @@ import PropTypes from 'prop-types';
 import { getFavorites, setFavorites } from '../../utils/Tools';
 
 class AddRemoveFavoriteButton extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { render: false };
-    }
-
     toggleFavorite = beerId => {
         const favorites = getFavorites();
         const index = favorites.indexOf(beerId);

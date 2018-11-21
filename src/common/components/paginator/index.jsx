@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { PAGINATION_FAVORITES } from '../../constants/app';
 
-import './paginator.css';
+import './index.css';
 
 class Paginator extends Component {
     constructor(props) {
@@ -15,7 +15,7 @@ class Paginator extends Component {
     calcPages = () => {
         this.totalPages = Math.ceil(this.props.total / PAGINATION_FAVORITES);
         if (this.totalPages < this.state.currentPage) {
-            this.setState({ currentPage: this.state.currentPage - 1 });
+            this.setState(prevState => ({ currentPage: prevState.currentPage - 1 }));
         }
     };
 
@@ -30,7 +30,11 @@ class Paginator extends Component {
         return (
             <ul className="pagination">
                 <li
-                    className={this.state.currentPage === 1 ? 'disabled' : '' + ' pagination__icon'}
+                    className={
+                        this.state.currentPage === 1
+                            ? 'disabled  pagination__icon'
+                            : 'pagination__icon'
+                    }
                     onClick={() =>
                         this.state.currentPage !== 1 && this.setPage(this.state.currentPage - 1)
                     }
@@ -54,8 +58,8 @@ class Paginator extends Component {
                 <li
                     className={
                         this.state.currentPage === this.totalPages
-                            ? 'disabled'
-                            : '' + ' pagination__icon'
+                            ? 'disabled pagination__icon'
+                            : 'pagination__icon'
                     }
                     onClick={() =>
                         this.state.currentPage !== this.totalPages &&
