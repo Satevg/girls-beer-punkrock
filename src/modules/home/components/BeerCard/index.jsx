@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './index.css';
-import AddRemoveFavoriteButton from '../../../../common/components/add-remove-favorite-button';
+import AddRemoveFavoriteButton from '../../../../common/components/AddRemoveFavoriteButton';
 import { getFavorites, setFavorites } from '../../../../common/utils/Tools';
 
 class BeerCard extends Component {

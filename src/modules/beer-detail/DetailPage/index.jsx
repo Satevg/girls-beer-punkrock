@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import './index.css';
-import AddRemoveFavoriteButton from '../../../common/components/add-remove-favorite-button';
+import AddRemoveFavoriteButton from '../../../common/components/AddRemoveFavoriteButton';
 import BeerStore from '../../../data-access/services/beerService';
 import Spinner from '../../../common/components/spinner';
 

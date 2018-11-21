@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import BeerCard from '../BeerCard';
@@ -8,19 +7,8 @@ import SearchForm from '../SearchForm';
 import Spinner from '../../../../common/components/spinner';
 import ResultsFilter from '../ResultsFilter';
 import { PAGINATION_HOME_SEARCH } from '../../../../common/constants/app';
-import { addBeers, clearBeers, setBeers } from '../../actions/index';
 
-const mapStateToProps = state => ({
-    beers: state.beers
-});
-
-const mapDispatchToProps = dispatch => ({
-    addBeers: beers => dispatch(addBeers(beers)),
-    setBeers: beers => dispatch(setBeers(beers)),
-    clearBeers: () => dispatch(clearBeers())
-});
-
-class ConnectedHome extends Component {
+class SearchPage extends Component {
     constructor(props) {
         super(props);
         this.beerStore = BeerStore;
@@ -144,20 +132,15 @@ class ConnectedHome extends Component {
     }
 }
 
-ConnectedHome.propTypes = {
+SearchPage.propTypes = {
     addBeers: PropTypes.func.isRequired,
     setBeers: PropTypes.func.isRequired,
     clearBeers: PropTypes.func.isRequired,
     beers: PropTypes.arrayOf(PropTypes.object)
 };
 
-ConnectedHome.defaultProps = {
+SearchPage.defaultProps = {
     beers: []
 };
 
-const Home = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ConnectedHome);
-
-export default Home;
+export default SearchPage;
