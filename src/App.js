@@ -12,19 +12,19 @@ import DefaultLayout from './modules/layout';
 // window.addBeers = addBeers;
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <Router>
-          <div>
-            <DefaultLayout>
-              <Routes />
-            </DefaultLayout>
-          </div>
-        </Router>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="App">
+                <Router>
+                    <div>
+                        <DefaultLayout>
+                            <Routes />
+                        </DefaultLayout>
+                    </div>
+                </Router>
+            </div>
+        );
+    }
 }
 
 export default App;

@@ -8,10 +8,10 @@ import App from './App';
 import ReduxStore from './store/ReduxStore/reduxStore';
 
 render(
-  <Provider store={ReduxStore}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
+    <Provider store={ReduxStore}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
