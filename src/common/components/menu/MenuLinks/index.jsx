@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-class MenuLinks extends Component {
+export default class MenuLinks extends Component {
     constructor() {
         super();
         this.btnRef = React.createRef();
@@ -36,5 +36,3 @@ MenuLinks.propTypes = {
 MenuLinks.defaultProps = {
     menuStatus: ''
 };
-
-export default MenuLinks;

@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import BeerCard from '../BeerCard';
-import BeerStore from '../../../../data-access/services/beerService';
-import SearchForm from '../SearchForm';
-import Spinner from '../../../../common/components/spinner';
-import ResultsFilter from '../ResultsFilter';
 import { PAGINATION_HOME_SEARCH } from '../../../../common/constants/app';
+import BeerService from '../../../../data-access/services/beerService';
+import Spinner from '../../../../common/components/spinner';
+import BeerCard from '../BeerCard';
+import SearchForm from '../SearchForm';
+import ResultsFilter from '../ResultsFilter';
 
-class SearchPage extends Component {
+export default class SearchPage extends Component {
     constructor(props) {
         super(props);
-        this.beerStore = BeerStore;
         this.initialFilters = { abv_lt: 14, ibu_lt: 120, ebc_lt: 80 };
         this.state = {
             page: 1,
@@ -40,8 +39,7 @@ class SearchPage extends Component {
             queryParams.beer_name = this.searchString;
             queryParams.page = page;
 
-            this.beerStore
-                .searchBeers(queryParams)
+            BeerService.searchBeers(queryParams)
                 .then(moreBeers => {
                     this.props.addBeers(moreBeers);
                     if (moreBeers.length === 0) this.stopSearch = true;
@@ -76,8 +74,7 @@ class SearchPage extends Component {
         queryParams.beer_name = this.searchString;
         queryParams.page = 1;
 
-        this.beerStore
-            .searchBeers(queryParams)
+        BeerService.searchBeers(queryParams)
             .then(results => {
                 this.props.setBeers(results);
             })
@@ -142,5 +139,3 @@ SearchPage.propTypes = {
 SearchPage.defaultProps = {
     beers: []
 };
-
-export default SearchPage;

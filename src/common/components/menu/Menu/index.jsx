@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
-import './index.css';
 import MenuLinks from '../MenuLinks';
 
-class Menu extends Component {
+import './index.css';
+
+export default class Menu extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -40,5 +41,3 @@ class Menu extends Component {
         );
     }
 }
-
-export default Menu;

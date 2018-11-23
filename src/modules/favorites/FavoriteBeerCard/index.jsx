@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import './index.css';
 import { getFavorites, setFavorites } from '../../../common/utils/Tools';
 
-class FavoriteBeerCard extends Component {
+import './index.css';
+
+export default class FavoriteBeerCard extends Component {
     removeFavorite = beerId => {
         const favorites = getFavorites();
         const index = favorites.indexOf(beerId);
@@ -65,5 +66,3 @@ FavoriteBeerCard.propTypes = {
     item: PropTypes.object.isRequired,
     removeFavoriteCard: PropTypes.func.isRequired
 };
-
-export default FavoriteBeerCard;

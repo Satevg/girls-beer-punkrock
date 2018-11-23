@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import { PAGINATION_FAVORITES } from '../../constants/app';
 
 import './index.css';
 
-class Paginator extends Component {
+export default class Paginator extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -79,5 +80,3 @@ Paginator.propTypes = {
     total: PropTypes.number.isRequired,
     filterBeers: PropTypes.func.isRequired
 };
-
-export default Paginator;

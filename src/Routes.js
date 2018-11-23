@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router';
 
 import DetailPage from './modules/beer-detail/DetailPage';
 import Favorites from './modules/favorites/FavoritePage';
-import SearchPage from './modules/home/components/ConnectedSearchPage';
+import SearchPage from './modules/home/components/SearchPageContainer';
 
 const Routes = () => (
     <div>

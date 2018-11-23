@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import SearchPage from '../SearchPage';
 import { addBeers, clearBeers, setBeers } from '../../actions/index';
+import SearchPage from '../SearchPage';
 
 const mapStateToProps = state => ({
     beers: state.beers
@@ -15,7 +15,7 @@ const mapDispatchToProps = dispatch => ({
     clearBeers: () => dispatch(clearBeers())
 });
 
-class ConnectedSearchPage extends Component {
+class SearchPageContainer extends Component {
     render() {
         return (
             <SearchPage
@@ -28,20 +28,20 @@ class ConnectedSearchPage extends Component {
     }
 }
 
-ConnectedSearchPage.propTypes = {
+SearchPageContainer.propTypes = {
     addBeers: PropTypes.func.isRequired,
     setBeers: PropTypes.func.isRequired,
     clearBeers: PropTypes.func.isRequired,
     beers: PropTypes.arrayOf(PropTypes.object)
 };
 
-ConnectedSearchPage.defaultProps = {
+SearchPageContainer.defaultProps = {
     beers: []
 };
 
-const SearchPageConn = connect(
+const ConnectedSearchPage = connect(
     mapStateToProps,
     mapDispatchToProps
-)(ConnectedSearchPage);
+)(SearchPageContainer);
 
-export default SearchPageConn;
+export default ConnectedSearchPage;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class SearchForm extends Component {
+export default class SearchForm extends Component {
     constructor(props) {
         super(props);
         this.timeout = 0;
@@ -42,5 +42,3 @@ class SearchForm extends Component {
 SearchForm.propTypes = {
     performSearch: PropTypes.func.isRequired
 };
-
-export default SearchForm;

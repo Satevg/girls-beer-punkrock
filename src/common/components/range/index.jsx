@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class Range extends Component {
+export default class Range extends Component {
     render() {
         return (
             <p className="range-field">
@@ -33,5 +33,3 @@ Range.defaultProps = {
     step: '1',
     defaultValue: '120'
 };
-
-export default Range;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { getFavorites, setFavorites } from '../../utils/Tools';
 
-class AddRemoveFavoriteButton extends Component {
+export default class AddRemoveFavoriteButton extends Component {
     toggleFavorite = beerId => {
         const favorites = getFavorites();
         const index = favorites.indexOf(beerId);
@@ -35,5 +35,3 @@ AddRemoveFavoriteButton.propTypes = {
     id: PropTypes.number.isRequired,
     reRender: PropTypes.func.isRequired
 };
-
-export default AddRemoveFavoriteButton;

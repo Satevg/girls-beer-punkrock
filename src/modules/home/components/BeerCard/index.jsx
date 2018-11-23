@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import './index.css';
-import AddRemoveFavoriteButton from '../../../../common/components/AddRemoveFavoriteButton';
 import { getFavorites, setFavorites } from '../../../../common/utils/Tools';
+import AddRemoveFavoriteButton from '../../../../common/components/AddRemoveFavoriteButton';
 
-class BeerCard extends Component {
+import './index.css';
+
+export default class BeerCard extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -57,5 +58,3 @@ class BeerCard extends Component {
 BeerCard.propTypes = {
     item: PropTypes.object.isRequired
 };
-
-export default BeerCard;

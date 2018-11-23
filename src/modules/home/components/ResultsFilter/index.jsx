@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import './index.css';
 import Range from '../../../../common/components/range';
 
-class ResultsFilter extends Component {
+import './index.css';
+
+export default class ResultsFilter extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,11 +14,52 @@ class ResultsFilter extends Component {
             ebc_lt: 80
         };
         this.timeout = 0;
+        this.constructFilters();
     }
 
-    // 1. Alcohol by volume with range from 2 to 14;
-    // 2. International bitterness units with range from 0 to 120;
-    // 3. Color by EBC with range from 4 to 80.
+    constructFilters = () => {
+        this.filters = [
+            {
+                name: 'abv_lt',
+                fullName: 'Alcohol by volume',
+                rangeComponent: (
+                    <Range
+                        min="2"
+                        max="14"
+                        defaultValue="14"
+                        name="abv_lt"
+                        handleChange={this.handleValue}
+                    />
+                )
+            },
+            {
+                name: 'ibu_lt',
+                fullName: 'International bitterness',
+                rangeComponent: (
+                    <Range
+                        min="0"
+                        max="120"
+                        defaultValue="120"
+                        name="ibu_lt"
+                        handleChange={this.handleValue}
+                    />
+                )
+            },
+            {
+                name: 'ebc_lt',
+                fullName: 'Color by EBC',
+                rangeComponent: (
+                    <Range
+                        min="4"
+                        max="80"
+                        defaultValue="80"
+                        name="ebc_lt"
+                        handleChange={this.handleValue}
+                    />
+                )
+            }
+        ];
+    };
 
     handleValue = event => {
         const dict = {};
@@ -29,6 +71,20 @@ class ResultsFilter extends Component {
         }, 300);
     };
 
+    renderFilters = () =>
+        this.filters.map(item => (
+            <div key={item.name} className="row search-filter__row">
+                <div className="col s5">
+                    <div className="right">
+                        <p className="search-filter__label">
+                            {item.fullName} <b>{this.state[item.name]}</b>
+                        </p>
+                    </div>
+                </div>
+                <div className="col s4">{item.rangeComponent}</div>
+            </div>
+        ));
+
     render() {
         return (
             <div>
@@ -37,64 +93,7 @@ class ResultsFilter extends Component {
                         <h5>Filter results</h5>
                     </div>
                 </div>
-
-                <div className="row search-filter__row">
-                    <div className="col s5">
-                        <div className="right">
-                            <p className="search-filter__label">
-                                Alcohol by volume <b>{this.state.abv_lt}</b>
-                            </p>
-                        </div>
-                    </div>
-                    <div className="col s4">
-                        <Range
-                            min="2"
-                            max="14"
-                            defaultValue="14"
-                            // step="0.1" API does not support decimal
-                            name="abv_lt"
-                            handleChange={this.handleValue}
-                        />
-                    </div>
-                </div>
-
-                <div className="row search-filter__row">
-                    <div className="col s5">
-                        <div className="right">
-                            <p className="search-filter__label">
-                                International bitterness <b>{this.state.ibu_lt}</b>
-                            </p>
-                        </div>
-                    </div>
-                    <div className="col s4">
-                        <Range
-                            min="0"
-                            max="120"
-                            defaultValue="120"
-                            name="ibu_lt"
-                            handleChange={this.handleValue}
-                        />
-                    </div>
-                </div>
-
-                <div className="row search-filter__row">
-                    <div className="col s5">
-                        <div className="right">
-                            <p className="search-filter__label">
-                                Color by EBC <b>{this.state.ebc_lt}</b>
-                            </p>
-                        </div>
-                    </div>
-                    <div className="col s4">
-                        <Range
-                            min="4"
-                            max="80"
-                            defaultValue="80"
-                            name="ebc_lt"
-                            handleChange={this.handleValue}
-                        />
-                    </div>
-                </div>
+                {this.renderFilters()}
             </div>
         );
     }
@@ -103,5 +102,3 @@ class ResultsFilter extends Component {
 ResultsFilter.propTypes = {
     performSearch: PropTypes.func.isRequired
 };
-
-export default ResultsFilter;

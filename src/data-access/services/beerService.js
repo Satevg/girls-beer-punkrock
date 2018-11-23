@@ -1,31 +1,19 @@
 import { API_HOST } from '../../common/constants/app';
-import requestHelper from '../helpers/FetchRequestHelper';
+import httpHelper from '../helpers/FetchRequestHelper';
 
-class BeerStore {
-    constructor() {
-        this.httpHelper = requestHelper;
-    }
+const createQueryParamsFromDict = params =>
+    Object.keys(params)
+        .map(k => `${k}=${encodeURI(params[k])}`)
+        .join('&');
 
-    createQueryParamsFromDict = params =>
-        Object.keys(params)
-            .map(k => `${k}=${encodeURI(params[k])}`)
-            .join('&');
+const getBeer = id => httpHelper.request('GET', `${API_HOST}/${id}`);
 
-    getFavoriteBeers(ids) {
-        const searchFavorites = ids.join('|');
+const searchBeers = qs => httpHelper.request('GET', `${API_HOST}?${createQueryParamsFromDict(qs)}`);
 
-        return this.httpHelper.request('GET', `${API_HOST}?ids=${searchFavorites}`);
-    }
+const getFavoriteBeers = ids => httpHelper.request('GET', `${API_HOST}?ids=${ids.join('|')}`);
 
-    searchBeers(qs) {
-        return this.httpHelper.request('GET', `${API_HOST}?${this.createQueryParamsFromDict(qs)}`);
-    }
-
-    getBeer(id) {
-        return this.httpHelper.request('GET', `${API_HOST}/${id}`);
-    }
-}
-
-const beerStore = new BeerStore();
-
-export default beerStore;
+export default {
+    getBeer,
+    searchBeers,
+    getFavoriteBeers
+};

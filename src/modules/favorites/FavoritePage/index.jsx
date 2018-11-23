@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import BeerStore from '../../../data-access/services/beerService';
+import { getFavorites } from '../../../common/utils/Tools';
+import { PAGINATION_FAVORITES } from '../../../common/constants/app';
+import BeerService from '../../../data-access/services/beerService';
 import FavoriteBeerCard from '../FavoriteBeerCard';
 import Paginator from '../../../common/components/paginator';
 import Spinner from '../../../common/components/spinner';
-import { getFavorites } from '../../../common/utils/Tools';
-import { PAGINATION_FAVORITES } from '../../../common/constants/app';
 
 export default class Favorites extends Component {
     constructor(props) {
@@ -17,14 +17,12 @@ export default class Favorites extends Component {
             isLoading: false
         };
         this.favorites = getFavorites();
-        this.beerStore = BeerStore;
         this.isLoading = false;
     }
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        this.beerStore
-            .getFavoriteBeers(this.favorites)
+        BeerService.getFavoriteBeers(this.favorites)
             .then(beers => {
                 this.setState({
                     beers

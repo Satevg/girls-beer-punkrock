@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './index.css';
 
-class Spinner extends Component {
+export default class Spinner extends Component {
     render() {
         return (
             <div className="spinnerWrapper spinner">
@@ -72,5 +72,3 @@ class Spinner extends Component {
         );
     }
 }
-
-export default Spinner;
