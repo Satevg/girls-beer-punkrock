@@ -1,0 +1,35 @@
+.beer-detail > .row {
+    margin-bottom: 0px;
+}
+
+.beer-detail > h4, h5 {
+    margin-bottom: 3px;
+}
+
+#beer-detail__tagline {
+    font-style: italic;
+    margin: 5px auto;
+}
+
+.beer-detail__value {
+    border-radius: 33%;
+    background-color: darkgray;
+    width: 30px;
+    height: 25px;
+    color: white;
+    border: 2px solid darkgray;
+}
+
+.beer-detail__ingredients-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.beer-detail__ingredients-detail {
+    margin: 2px auto;
+    font-size: 14px;
+}
+
+#beer-detail__brewing {
+    margin: 5px auto;
+}

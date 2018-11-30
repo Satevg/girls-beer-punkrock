@@ -1,0 +1,24 @@
+.favorite-beer-card__image {
+    height: auto;
+    width: auto;
+    margin: auto;
+    padding-top: 20px;
+    max-width: 100px;
+    max-height: 200px;
+}
+
+.favorite-beer-card__button {
+    margin-right: 10px;
+}
+
+.favorite-beer-card__title {
+    margin-bottom: 0px;
+}
+
+.favorite-beer-card__tagline {
+    color:grey;
+}
+
+.favorite-beer-card__actions {
+    margin: 15px 0px 0px;
+}
