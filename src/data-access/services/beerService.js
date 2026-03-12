@@ -10,7 +10,7 @@ const getBeer = id => httpHelper.request('GET', `${API_HOST}/${id}`);
 
 const searchBeers = qs => httpHelper.request('GET', `${API_HOST}?${createQueryParamsFromDict(qs)}`);
 
-const getFavoriteBeers = ids => httpHelper.request('GET', `${API_HOST}?ids=${ids.join('|')}`);
+const getFavoriteBeers = ids => httpHelper.request('GET', `${API_HOST}?ids=${ids.join(',')}&page=1&per_page=80`);
 
 export default {
     getBeer,

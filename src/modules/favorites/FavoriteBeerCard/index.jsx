@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { API_IMAGES_HOST } from '../../../common/constants/app';
 import { getFavorites, setFavorites } from '../../../common/utils/Tools';
 
 import './index.css';
@@ -51,7 +52,7 @@ export default class FavoriteBeerCard extends Component {
                         <div className="col s3">
                             <img
                                 className="favorite-beer-card__image"
-                                src={item.image_url}
+                                src={`${API_IMAGES_HOST}/${item.image}`}
                                 alt={item.name}
                             />
                         </div>

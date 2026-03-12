@@ -9,7 +9,7 @@
 .menubar span {
     display: inline-block;
     position: absolute;
-    left: 33%;
+    left: 50%;
     transform: translateX(-50%);
     font-weight: 300;
     font-size: 2em;

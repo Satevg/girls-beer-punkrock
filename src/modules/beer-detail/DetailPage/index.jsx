@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { API_IMAGES_HOST } from '../../../common/constants/app';
 import BeerService from '../../../data-access/services/beerService';
 import AddRemoveFavoriteButton from '../../../common/components/AddRemoveFavoriteButton';
 import Spinner from '../../../common/components/spinner';
@@ -23,7 +24,7 @@ export default class DetailPage extends Component {
         BeerService.getBeer(this.id)
             .then(item => {
                 if (item !== null) {
-                    this.setState({ item: item[0] });
+                    this.setState({ item });
                 }
             })
             .finally(() => {
@@ -48,7 +49,7 @@ export default class DetailPage extends Component {
                 </div>
                 <div className="col s3">
                     <div className="card-image">
-                        <img className="beer-card__image" alt={item.name} src={item.image_url} />
+                        <img className="beer-card__image" alt={item.name} src={`${API_IMAGES_HOST}/${item.image}`} />
                     </div>
                 </div>
             </div>

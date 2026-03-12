@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { API_IMAGES_HOST } from '../../../../common/constants/app';
 import { getFavorites, setFavorites } from '../../../../common/utils/Tools';
 import AddRemoveFavoriteButton from '../../../../common/components/AddRemoveFavoriteButton';
 
@@ -38,7 +39,7 @@ export default class BeerCard extends Component {
         return (
             <div className="beer-card card col s4">
                 <div className="card-image">
-                    <img className="beer-card__image circle" alt={item.name} src={item.image_url} />
+                    <img className="beer-card__image" alt={item.name} src={`${API_IMAGES_HOST}/${item.image}`} />
                 </div>
                 <div className="card-content center">
                     <span className="beer-card__title">{item.name}</span>

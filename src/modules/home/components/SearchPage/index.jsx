@@ -24,6 +24,14 @@ export default class SearchPage extends Component {
 
     componentDidMount() {
         document.addEventListener('scroll', this.trackScrolling);
+        this.setState({ isLoading: true });
+        BeerService.searchBeers({ per_page: PAGINATION_HOME_SEARCH, page: 1 })
+            .then(beers => {
+                this.props.setBeers(beers);
+            })
+            .finally(() => {
+                this.setState({ isLoading: false });
+            });
     }
 
     componentWillUnmount() {
